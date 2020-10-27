@@ -35,21 +35,21 @@ The following python libraries are used for the project:
 
 ## File structure
 The python files for the web app and the model file classifier.pkl are structured in the following way
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html      # classification result page of web app
-|- run.py         # Flask file that runs app
-
-- data
-|- disaster_categories.csv  # data to process (not included due to license issues)
-|- disaster_messages.csv    # data to process (not included due to license issues)
-|- process_data.py          # python file which performs the ETL pipeline (Extract, Transform, and Load process)
-|- DisasterResponse.db      # database file containing the cleaned messages and categories (not included due to license issues)
-
-- models
-|- train_classifier.py      # python file which performs the machine learning pipeline (split the data, build the machine learning model, traing and evaluate the model)
-|- classifier.pkl           # saved ML model 
+- app<br>
+| - template<br>
+| |- master.html  # main page of web app<br>
+| |- go.html      # classification result page of web app<br>
+|- run.py         # Flask file that runs app<br>
+<br>
+- data<br>
+|- disaster_categories.csv  # data to process (not included due to license issues)<br>
+|- disaster_messages.csv    # data to process (not included due to license issues)<br>
+|- process_data.py          # python file which performs the ETL pipeline (Extract, Transform, and Load process)<br>
+|- DisasterResponse.db      # database file containing the cleaned messages and categories (not included due to license issues)<br>
+<br>
+- models<br>
+|- train_classifier.py      # python file which performs the machine learning pipeline (split the data, build the machine learning model, traing and evaluate the model)<br>
+|- classifier.pkl           # saved ML model <br>
 
 ## additional programs necessary to run the web app
 Flask is used to use the web app.
