@@ -3,23 +3,20 @@ Analyzing disaster messages using a machine learning model via a web app <br>
 Udacity Nanodegree: Date Science
 
 ## Objective
-In this project, I built a model for an API that classifies disaster messages. <br>
-I used a dataset of real disaster messages from Figure Eight (https://www.figure-eight.com/) that were sent during disaster events to train the model. <br>
-My machine learning (ML) pipeline using NLTK, scikit-learn and GridSearchCV categorizes these messages to be able to analyze and categorize new, so far unknown messages. <br>
-A web app will be the interface between a potential emergency worker entering the message and the machine learning model to categorize the message for easier and faster help. 
+In this project, I built a model for an API that classifies disaster messages. I used a dataset of real disaster messages from Figure Eight (https://www.figure-eight.com/) that were sent during disaster events to train the model. My machine learning (ML) pipeline using NLTK, scikit-learn and GridSearchCV categorizes these messages to be able to analyze and categorize new, so far unknown messages. A web app will be the interface between a potential emergency worker entering the message and the machine learning model to categorize the message for easier and faster help. 
 
 ## Instructions
 1. Set up the below listed file and folder structure
 
 2. Run the following command in the project's root directory to set up the database
-    - To run the ETL pipeline that cleans the data and store them in the database file 'data/DisasterResponse.db`
+    - To run the ETL pipeline that cleans the data and store them in the database file data/DisasterResponse.db<br>
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
 
 3. Run the following command in the project's root directory to set up the machine learning model.
-    - To run the ML pipeline that trains the classifier and saves it to 'models/classifier.pkl'
+    - To run the ML pipeline that trains the classifier and saves it to models/classifier.pkl <br>
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
-4. Run the following command in the app's directory to run your web app.
+4. Run the following command in the app's directory to run your web app. <br>
     `python run.py`
 
 ## Libraries
