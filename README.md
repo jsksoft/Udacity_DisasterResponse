@@ -19,6 +19,8 @@ In this project, I built a model for an API that classifies disaster messages. I
 4. Run the following command in the app's directory to run your web app. <br>
     `python run.py`
 
+5. Go to http://0.0.0.0:3001/
+
 ## Libraries
 The following python libraries are used for the project:
 - sys
