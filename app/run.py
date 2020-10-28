@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar, Pie
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
@@ -40,9 +40,20 @@ def index():
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
+    # data of first visualization: number of messages vs. genre
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+    # data of first visualization: number of messages per category
+    category_counts = df.drop(columns=['id', 'message', 'original','genre']).sum().sort_values(ascending=False)
+    category_names = list(category_counts.index)
+    # data of 3. - 5. visualization: top 5 categories per genre
+    top_categories_direct_counts = df[df['genre'] == 'direct'].iloc[:,4:].sum().sort_values(ascending=False)[0:5]
+    top_categories_direct_names = list(top_categories_direct_counts.index)
+    top_categories_news_counts = df[df['genre'] == 'news'].iloc[:,4:].sum().sort_values(ascending=False)[0:5]
+    top_categories_news_names = list(top_categories_news_counts.index)
+    top_categories_social_counts = df[df['genre'] == 'social'].iloc[:,4:].sum().sort_values(ascending=False)[0:5]
+    top_categories_social_names = list(top_categories_social_counts.index)
+
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -55,13 +66,69 @@ def index():
             ],
 
             'layout': {
-                'title': 'Distribution of Message Genres',
+                'title': 'Distribution of message genres',
                 'yaxis': {
-                    'title': "Count"
+                    'title': "Number of messages"
                 },
                 'xaxis': {
                     'title': "Genre"
                 }
+            }
+            
+        },
+        {
+            'data': [
+                Bar(
+                    x=category_names,
+                    y=category_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of message categories',
+                'yaxis': {
+                    'title': "Number of messages"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+            
+        },
+        {
+            'data': [
+                Pie(
+                    labels=top_categories_direct_names,
+                    values=top_categories_direct_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 5 categories of direct messages',
+            }
+        },
+        {
+            'data': [
+                Pie(
+                    labels=top_categories_news_names,
+                    values=top_categories_news_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 5 categories of news messages',
+            }
+        },
+        {
+            'data': [
+                Pie(
+                    labels=top_categories_social_names,
+                    values=top_categories_social_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 5 categories of social media messages',
             }
         }
     ]
